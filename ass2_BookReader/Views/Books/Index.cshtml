@@ -1,46 +1,72 @@
-﻿@model List<ass2_BookReader.Models.Book>
+﻿@model IEnumerable<ass2_BookReader.Models.Book>
+@{
+    ViewBag.Title = "Book Library";
+}
 
-<link rel="stylesheet" href="~/css/style.css" />
-<h2>Book List</h2>
+<main>
 
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <h2>Book Library</h2>
+        <p>Explore and manage your personal reading collection</p>
+    </div>
 
-<form method="get">
-    <input type="text" name="search" placeholder="Search by title" />
-    <select name="category">
-        <option value="">All Categories</option>
-        <option value="Tech">Technology</option>
-        <option value="Novel">Novel</option>
-    </select>
-    <button type="submit">Search</button>
-</form>
+    <!-- 工具栏 -->
+    <div class="toolbar">
 
+        <!-- 搜索表单（你原来的 form，保留逻辑） -->
+        <form method="get">
+            <input type="text" name="search" placeholder="Search by title" />
+            <select name="category">
+                <option value="">All Categories</option>
+                <option value="Tech">Technology</option>
+                <option value="Novel">Novel</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
 
-<div class="book-grid">
-    @foreach (var book in Model)
-    {
-        <div class="book-card">
-            <h3>@book.Title</h3>
-
-            <div class="book-meta">
-                Author: @book.Author <br />
-                Category: @book.Category
-            </div>
-
-            <div class="book-price">
-                $@book.Price
-            </div>
-
-            <div class="book-actions">
-                <a href="/Books/Details/@book.Id">View Details</a>
-            </div>
+        <!-- 视图切换 -->
+        <div class="view-switch">
+            <button class="active" data-view="grid">Grid</button>
+            <button data-view="list">List</button>
         </div>
-    }
-</div>
 
+    </div>
 
-<div>
-    @for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
-    {
-        <a href="?page=@i">@i</a>
-    }
-</div>
+    <!-- 卡片 / 列表区域 -->
+    <div class="book-grid">
+
+        @foreach (var book in Model)
+        {
+            <div class="book-card">
+
+                <!-- 分类标签（可选但强烈推荐） -->
+                <span class="book-badge">@book.Category</span>
+
+                <h3>@book.Title</h3>
+
+                <div class="book-meta">
+                    Author: @book.Author <br />
+                    Category: @book.Category
+                </div>
+
+                <div class="book-price">
+                    $@book.Price
+                </div>
+
+                <div class="book-actions">
+                    <a href="/Books/Details/@book.Id">View Details</a>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+    <div>
+        @for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+        {
+            <a href="?page=@i">@i</a>
+        }
+    </div>
+</main>

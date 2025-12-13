@@ -1,8 +1,20 @@
 ﻿@model ass2_BookReader.Models.Book
+@{
+    ViewBag.Title = "Book Details";
+}
 
+<main>
 
-<h2>@Model.Title</h2>
-<p><strong>Author:</strong> @Model.Author</p>
-<p><strong>Category:</strong> @Model.Category</p>
-<p><strong>Price:</strong> $@Model.Price</p>
-<p>@Model.Description</p>
+    <div class="book-details">
+
+        <h2>@Model.Title</h2>
+
+        <p><strong>Author:</strong> @Model.Author</p>
+        <p><strong>Category:</strong> @Model.Category</p>
+        <p><strong>Price:</strong> $@Model.Price</p>
+        <p><strong>Description:</strong></p>
+        <p>@Model.Description</p>
+
+    </div>
+
+</main>
