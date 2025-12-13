@@ -1,0 +1,99 @@
+﻿/* =========================
+
+
+.book-meta {
+font-size: 14px;
+color: var(--text-sub);
+margin-bottom: 14px;
+}
+
+
+.book-price {
+margin-top: auto;
+font-size: 18px;
+font-weight: 700;
+color: var(--primary);
+}
+
+
+.book-actions {
+margin-top: 14px;
+}
+
+
+.book-actions a {
+display: inline-block;
+padding: 8px 14px;
+border-radius: 8px;
+background-color: #eef2ff;
+color: var(--primary);
+font-weight: 500;
+text-decoration: none;
+}
+
+
+.book-actions a:hover {
+background-color: #e0e7ff;
+}
+
+
+/* ===== 分页 ===== */
+.pagination {
+    margin-top: 40px;
+    text-align: center;
+}
+
+
+    .pagination a {
+        display: inline-block;
+        margin: 0 6px;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background-color: #e5e7eb;
+        color: #111827;
+        font-weight: 600;
+    }
+
+
+        .pagination a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+
+/* ===== 详情页卡片 ===== */
+.book-details {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+
+    .book-details h2 {
+        margin-top: 0;
+    }
+
+
+    .book-details p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--text-sub);
+    }
+
+
+/* ===== 页脚 ===== */
+footer {
+    margin-top: 80px;
+    padding: 24px;
+    background-color: #111827;
+    color: #9ca3af;
+    text-align: center;
+}
+
+
+    footer a {
+        color: #93c5fd;
+    }

@@ -1,0 +1,46 @@
+﻿@model List<ass2_BookReader.Models.Book>
+
+<link rel="stylesheet" href="~/css/style.css" />
+<h2>Book List</h2>
+
+
+<form method="get">
+    <input type="text" name="search" placeholder="Search by title" />
+    <select name="category">
+        <option value="">All Categories</option>
+        <option value="Tech">Technology</option>
+        <option value="Novel">Novel</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+
+<div class="book-grid">
+    @foreach (var book in Model)
+    {
+        <div class="book-card">
+            <h3>@book.Title</h3>
+
+            <div class="book-meta">
+                Author: @book.Author <br />
+                Category: @book.Category
+            </div>
+
+            <div class="book-price">
+                $@book.Price
+            </div>
+
+            <div class="book-actions">
+                <a href="/Books/Details/@book.Id">View Details</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div>
+    @for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+    {
+        <a href="?page=@i">@i</a>
+    }
+</div>
