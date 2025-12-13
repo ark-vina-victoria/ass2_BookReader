@@ -1,40 +1,63 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="Book Reader - 在线图书阅读与展示平台">
+    <meta name="keywords" content="图书,阅读,编程,科幻,电子书">
+    <title>@ViewBag.Title - Book Reader</title>
+
+    <!-- 自定义CSS（覆盖MVC默认样式，满足"自定义外部CSS"要求） -->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- W3C验证器链接（满足页面要求） -->
+    <link rel="stylesheet" href="https://www.w3.org/Style/CSS/Validator">
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="切换导航" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("主页", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("关于", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+    <!-- 导航栏 -->
+    <header>
+        <nav class="site-nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")">BookReader</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="@Url.Action("Index", "Home")">首页</a></li>
+                    <li><a href="@Url.Action("Index", "Books")">图书列表</a></li>
+                    <li><a href="@Url.Action("About", "Home")">关于我们</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")">联系我们</a></li>
                 </ul>
             </div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
-        </footer>
-    </div>
+        </nav>
+    </header>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- 主要内容区域 -->
+    <main class="container">
+        @RenderBody() <!-- 渲染子页面内容 -->
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="@Url.Action("About", "Home")">关于我们</a>
+                <a href="@Url.Action("Contact", "Home")">联系我们</a>
+                <a href="mailto:support@bookreader.com">支持邮箱</a> <!-- 虚构邮箱链接 -->
+            </div>
+            <div class="validators">
+                <!-- HTML5和CSS3验证器链接（满足要求） -->
+                <a href="https://validator.w3.org/" target="_blank">HTML5 Validator</a>
+                <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS3 Validator</a>
+            </div>
+            <div class="copyright">
+                &copy; @DateTime.Now.Year BookReader. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 原生JavaScript脚本（按功能拆分） -->
+    <script src="~/js/search.js"></script>
+    <script src="~/js/sort.js"></script>
+    <script src="~/js/pagination.js"></script>
 </body>
 </html>

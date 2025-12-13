@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "联系我们 - Book Reader";
+}
+
+<section class="contact-page">
+    <div class="container">
+        <h1>联系我们</h1>
+        <div class="contact-container">
+            <!-- 联系信息区域 -->
+            <div class="contact-info">
+                <h2>联系方式</h2>
+                <ul class="contact-details">
+                    <li>
+                        <strong>邮箱：</strong>
+                        <a href="mailto:support@bookreader.com">support@bookreader.com</a>
+                    </li>
+                    <li>
+                        <strong>电话：</strong>
+                        <span>400-123-4567</span>
+                    </li>
+                    <li>
+                        <strong>地址：</strong>
+                        <span>北京市海淀区中关村软件园1号楼</span>
+                    </li>
+                    <li>
+                        <strong>工作时间：</strong>
+                        <span>周一至周五 9:00-18:00（法定节假日除外）</span>
+                    </li>
+                </ul>
+
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">微信</a>
+                    <a href="#" class="social-link">微博</a>
+                    <a href="#" class="social-link">知乎</a>
+                </div>
+            </div>
+
+            <!-- 联系表单区域（静态演示，无实际提交功能） -->
+            <div class="contact-form">
+                <h2>发送消息</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">主题</label>
+                        <input type="text" id="subject" name="subject" placeholder="请输入消息主题" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">消息内容</label>
+                        <textarea id="message" name="message" rows="5" placeholder="请输入您的问题或建议" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">发送消息</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

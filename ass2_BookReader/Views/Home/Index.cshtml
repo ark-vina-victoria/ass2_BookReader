@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "首页 - Book Reader";
+}
+
+<section class="home-hero">
+    <div class="hero-content">
+        <h1>探索海量图书，开启阅读之旅</h1>
+        <p>汇集编程、科幻、文学等多种类型图书，满足你的阅读需求</p>
+        <a href="@Url.Action("Index", "Books")" class="btn hero-btn">浏览图书</a>
+    </div>
+</section>
+
+<section class="home-features">
+    <div class="container">
+        <h2>平台特色</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>海量图书</h3>
+                <p>精选各类优质图书，涵盖编程、科幻、文学、历史等多个领域</p>
+            </div>
+            <div class="feature-card">
+                <h3>便捷搜索</h3>
+                <p>支持按书名、作者、分类搜索，快速找到你想要的图书</p>
+            </div>
+            <div class="feature-card">
+                <h3>多种排序</h3>
+                <p>按书名、价格、出版年份排序，满足个性化浏览需求</p>
+            </div>
+            <div class="feature-card">
+                <h3>舒适阅读</h3>
+                <p>简洁的阅读界面，提供良好的阅读体验</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-recommended">
+    <div class="container">
+        <h2>推荐图书</h2>
+        <div class="recommended-books">
+            <!-- 核心修复：添加空值判断 -->
+            @{
+                // 安全转换，避免空引用
+                var recommendedBooks = ViewBag.RecommendedBooks as List<ass2_BookReader.Models.Book>;
+                if (recommendedBooks != null && recommendedBooks.Any())
+                {
+                    foreach (var book in recommendedBooks)
+                    {
+                        <div class="recommended-book-card">
+                            <img src="~/Images/@book.CoverImage" alt="@book.Title">
+                            <h3><a href="@Url.Action("Detail", "Books", new { id = book.Id })">@book.Title</a></h3>
+                            <p>@book.Author</p>
+                            <p class="price">¥@book.Price.ToString("F2")</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <!-- 数据为空时的友好提示 -->
+                    <div class="no-recommended">
+                        <p>暂无推荐图书，<a href="@Url.Action("Index", "Books")">点击查看全部图书</a></p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
