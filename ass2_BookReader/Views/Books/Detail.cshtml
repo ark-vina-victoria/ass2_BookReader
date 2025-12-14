@@ -1,13 +1,12 @@
 ﻿@model ass2_BookReader.Models.Book
 @{
-    ViewBag.Title = Model.Title + " - 图书详情";
+    ViewBag.Title = Model.Title + " - Book Details";
 }
 
 <section class="book-detail-page">
     <h1>@Model.Title</h1>
 
     <div class="book-detail-container">
-        <!-- 左侧封面 -->
         <div class="book-detail-cover">
             @if (!string.IsNullOrEmpty(Model.CoverImage))
             {
@@ -19,38 +18,37 @@
             }
         </div>
 
-        <!-- 右侧详情 -->
         <div class="book-detail-info">
             <div class="book-meta">
                 <span class="meta-item">
-                    <strong>作者：</strong> @Model.Author
+                    <strong>Author：</strong> @Model.Author
                 </span>
                 <span class="meta-item">
-                    <strong>分类：</strong> @Model.Category
+                    <strong>Classification：</strong> @Model.Category
                 </span>
                 <span class="meta-item">
-                    <strong>出版年份：</strong> @Model.PublishYear
+                    <strong>Publication year：</strong> @Model.PublishYear
                 </span>
                 <span class="meta-item">
-                    <strong>价格：</strong> <span class="price">¥@Model.Price.ToString("F2")</span>
+                    <strong>Price：</strong> <span class="price">¥@Model.Price.ToString("F2")</span>
                 </span>
             </div>
 
-            <h2>内容简介</h2>
+            <h2>Content Introduction</h2>
             <div class="book-description">
                 <p>@Model.Description</p>
             </div>
 
-            <h2>图书信息</h2>
+            <h2>Book Information</h2>
             <ul class="book-specs">
                 <li><strong>ISBN：</strong> @Model.Isbn</li>
-                <li><strong>页数：</strong> @Model.PageCount 页</li>
-                <li><strong>语言：</strong> @Model.Language</li>
+                <li><strong>Page count：</strong> @Model.PageCount Page</li>
+                <li><strong>Language：</strong> @Model.Language</li>
             </ul>
 
             <div class="book-actions">
-                <a href="@Url.Action("Read", "Books", new { id = Model.Id })" class="btn primary-btn">开始阅读</a>
-                <a href="@Url.Action("Index", "Books", new { searchTerm = ViewBag.SearchTerm, sortBy = ViewBag.SortBy })" class="btn secondary-btn">返回列表</a>
+                <a href="@Url.Action("Read", "Books", new { id = Model.Id })" class="btn primary-btn">Start reading</a>
+                <a href="@Url.Action("Index", "Books", new { searchTerm = ViewBag.SearchTerm, sortBy = ViewBag.SortBy })" class="btn secondary-btn">Return list</a>
             </div>
         </div>
     </div>

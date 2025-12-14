@@ -1,34 +1,34 @@
 ﻿@{
-    ViewBag.Title = "首页 - Book Reader";
+    ViewBag.Title = "Home - Book Reader";
 }
 
 <section class="home-hero">
     <div class="hero-content">
-        <h1>探索海量图书，开启阅读之旅</h1>
-        <p>汇集编程、科幻、文学等多种类型图书，满足你的阅读需求</p>
-        <a href="@Url.Action("Index", "Books")" class="btn hero-btn">浏览图书</a>
+        <h1>Explore a Vast Library of Books and Start Your Reading Journey</h1>
+        <p>Curated collection of programming, sci-fi, literature and more to meet all your reading needs</p>
+        <a href="@Url.Action("Index", "Books")" class="btn hero-btn">Browse Books</a>
     </div>
 </section>
 
 <section class="home-features">
     <div class="container">
-        <h2>平台特色</h2>
+        <h2>Platform Features</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <h3>海量图书</h3>
-                <p>精选各类优质图书，涵盖编程、科幻、文学、历史等多个领域</p>
+                <h3>Extensive Book Collection</h3>
+                <p>Handpicked premium books covering programming, sci-fi, literature, history and more categories</p>
             </div>
             <div class="feature-card">
-                <h3>便捷搜索</h3>
-                <p>支持按书名、作者、分类搜索，快速找到你想要的图书</p>
+                <h3>Convenient Search</h3>
+                <p>Search by title, author or category to quickly find the books you want</p>
             </div>
             <div class="feature-card">
-                <h3>多种排序</h3>
-                <p>按书名、价格、出版年份排序，满足个性化浏览需求</p>
+                <h3>Multiple Sorting Options</h3>
+                <p>Sort by title, price or publication year to meet personalized browsing needs</p>
             </div>
             <div class="feature-card">
-                <h3>舒适阅读</h3>
-                <p>简洁的阅读界面，提供良好的阅读体验</p>
+                <h3>Comfortable Reading Experience</h3>
+                <p>Clean and intuitive reading interface for an optimal reading experience</p>
             </div>
         </div>
     </div>
@@ -36,11 +36,11 @@
 
 <section class="home-recommended">
     <div class="container">
-        <h2>推荐图书</h2>
+        <h2>Recommended Books</h2>
         <div class="recommended-books">
-            <!-- 核心修复：添加空值判断 -->
+            <!-- Core Fix: Add null check -->
             @{
-                // 安全转换，避免空引用
+                // Safe cast to avoid null reference exception
                 var recommendedBooks = ViewBag.RecommendedBooks as List<ass2_BookReader.Models.Book>;
                 if (recommendedBooks != null && recommendedBooks.Any())
                 {
@@ -56,9 +56,9 @@
                 }
                 else
                 {
-                    <!-- 数据为空时的友好提示 -->
+                    <!-- Friendly prompt when no data is available -->
                     <div class="no-recommended">
-                        <p>暂无推荐图书，<a href="@Url.Action("Index", "Books")">点击查看全部图书</a></p>
+                        <p>No recommended books at this time. <a href="@Url.Action("Index", "Books")">Click to view all books</a></p>
                     </div>
                 }
             }

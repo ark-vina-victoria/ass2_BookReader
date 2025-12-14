@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book Reader - 在线图书阅读与展示平台">
-    <meta name="keywords" content="图书,阅读,编程,科幻,电子书">
+    <meta name="description" content="Book Reader - Online Book Reading and Showcase Platform">
+    <meta name="keywords" content="books,reading,programming,science fiction,e-books">
     <title>@ViewBag.Title - Book Reader</title>
 
-    <!-- 自定义CSS（覆盖MVC默认样式，满足"自定义外部CSS"要求） -->
+    <!-- Custom CSS (overrides MVC default styles, meets "custom external CSS" requirement) -->
     <link href="~/css/style.css" rel="stylesheet" type="text/css" />
 
-    <!-- W3C验证器链接（满足页面要求） -->
+    <!-- W3C Validator Link (meets page requirements) -->
     <link rel="stylesheet" href="https://www.w3.org/Style/CSS/Validator">
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- Navigation Bar -->
     <header>
         <nav class="site-nav">
             <div class="container">
@@ -22,30 +22,30 @@
                     <a href="@Url.Action("Index", "Home")">BookReader</a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="@Url.Action("Index", "Home")">首页</a></li>
-                    <li><a href="@Url.Action("Index", "Books")">图书列表</a></li>
-                    <li><a href="@Url.Action("About", "Home")">关于我们</a></li>
-                    <li><a href="@Url.Action("Contact", "Home")">联系我们</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Index", "Books")">Book List</a></li>
+                    <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- 主要内容区域 -->
+    <!-- Main Content Area -->
     <main class="container">
-        @RenderBody() <!-- 渲染子页面内容 -->
+        @RenderBody() <!-- Render child page content -->
     </main>
 
-    <!-- 页脚 -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="@Url.Action("About", "Home")">关于我们</a>
-                <a href="@Url.Action("Contact", "Home")">联系我们</a>
-                <a href="mailto:support@bookreader.com">支持邮箱</a> <!-- 虚构邮箱链接 -->
+                <a href="@Url.Action("About", "Home")">About Us</a>
+                <a href="@Url.Action("Contact", "Home")">Contact Us</a>
+                <a href="mailto:support@bookreader.com">Support Email</a> <!-- Fictional email link -->
             </div>
             <div class="validators">
-                <!-- HTML5和CSS3验证器链接（满足要求） -->
+                <!-- HTML5 and CSS3 Validator Links (meets requirements) -->
                 <a href="https://validator.w3.org/" target="_blank">HTML5 Validator</a>
                 <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS3 Validator</a>
             </div>
@@ -55,7 +55,7 @@
         </div>
     </footer>
 
-    <!-- 原生JavaScript脚本（按功能拆分） -->
+    <!-- Native JavaScript Scripts (split by functionality) -->
     <script src="~/js/search.js"></script>
     <script src="~/js/sort.js"></script>
     <script src="~/js/pagination.js"></script>

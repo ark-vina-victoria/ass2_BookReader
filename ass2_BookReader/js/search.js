@@ -1,17 +1,14 @@
-﻿// 搜索表单提交处理
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.getElementById('searchForm');
     const searchTerm = document.getElementById('searchTerm');
 
     if (searchForm && searchTerm) {
-        // 按下Enter键提交表单
         searchTerm.addEventListener('keyup', function (e) {
             if (e.key === 'Enter') {
                 searchForm.submit();
             }
         });
 
-        // 搜索词清除功能
         const clearBtn = document.createElement('button');
         clearBtn.type = 'button';
         clearBtn.textContent = '×';
@@ -30,13 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
         searchForm.style.position = 'relative';
         searchForm.appendChild(clearBtn);
 
-        // 清除搜索词
         clearBtn.addEventListener('click', function () {
             searchTerm.value = '';
             clearBtn.style.display = 'none';
         });
 
-        // 输入时显示清除按钮
         searchTerm.addEventListener('input', function () {
             clearBtn.style.display = this.value ? 'inline-block' : 'none';
         });

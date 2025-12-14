@@ -1,43 +1,41 @@
 ﻿@model ass2_BookReader.Models.PagedResult<ass2_BookReader.Models.Book>
 @{
-    ViewBag.Title = "图书列表 - 搜索、排序与分页";
+    ViewBag.Title = "Book List - Search, Sort and Pagination";
 }
 
 <section class="books-page">
-    <h1>图书列表</h1>
+    <h1>List of Books</h1>
 
-    <!-- 搜索区域 -->
+    <!-- Search Area -->
     <div class="search-container">
         <form id="searchForm" action="@Url.Action("Index", "Books")" method="get">
             <input type="text"
                    name="searchTerm"
                    id="searchTerm"
-                   placeholder="搜索书名、作者或分类..."
+                   placeholder="Search for the book title, author or category..."
                    value="@ViewBag.SearchTerm" />
-            <button type="submit" class="search-btn">搜索</button>
+            <button type="submit" class="search-btn">Search</button>
         </form>
     </div>
 
-    <!-- 排序区域 -->
+    <!-- Sort Area -->
     <div class="sort-container">
-        <label for="sortBy">排序方式：</label>
+        <label for="sortBy">Sort by：</label>
         <select id="sortBy" name="sortBy" onchange="this.form.submit()">
-            <option value="title_asc" @(ViewBag.SortBy == "title_asc" ? "selected" : "")>书名（升序）</option>
-            <option value="title_desc" @(ViewBag.SortBy == "title_desc" ? "selected" : "")>书名（降序）</option>
-            <option value="price_asc" @(ViewBag.SortBy == "price_asc" ? "selected" : "")>价格（升序）</option>
-            <option value="price_desc" @(ViewBag.SortBy == "price_desc" ? "selected" : "")>价格（降序）</option>
-            <option value="year_desc" @(ViewBag.SortBy == "year_desc" ? "selected" : "")>出版年份（最新）</option>
+            <option value="title_asc" @(ViewBag.SortBy == "title_asc" ? "selected" : "")>Title (A-Z)</option>
+            <option value="title_desc" @(ViewBag.SortBy == "title_desc" ? "selected" : "")>Title (Z-A)</option>
+            <option value="price_asc" @(ViewBag.SortBy == "price_asc" ? "selected" : "")>Price (Low to High)</option>
+            <option value="price_desc" @(ViewBag.SortBy == "price_desc" ? "selected" : "")>Price (High to Low)</option>
+            <option value="year_desc" @(ViewBag.SortBy == "year_desc" ? "selected" : "")>Publication Year (Newest First)</option>
         </select>
     </div>
 
-    <!-- 图书网格 -->
     @if (Model.Items.Any())
     {
         <div class="books-grid">
             @foreach (var book in Model.Items)
             {
                 <div class="book-card">
-                    <!-- 图书封面 -->
                     <div class="book-cover">
                         @if (!string.IsNullOrEmpty(book.CoverImage))
                         {
@@ -48,29 +46,25 @@
                             <img src="https://via.placeholder.com/250x350?text=No+Cover" alt="No Cover" loading="lazy">
                         }
                     </div>
-                    <!-- 图书信息 -->
                     <div class="book-info">
                         <h3 class="book-title">
                             <a href="@Url.Action("Detail", "Books", new { id = book.Id })">@book.Title</a>
                         </h3>
-                        <p class="book-author">作者：@book.Author</p>
-                        <p class="book-category">分类：@book.Category</p>
+                        <p class="book-author">Author: @book.Author</p>
+                        <p class="book-category">Category: @book.Category</p>
                         <p class="book-price">¥@book.Price.ToString("F2")</p>
-                        <p class="book-year">出版年份：@book.PublishYear</p>
-                        <!-- 操作按钮 -->
+                        <p class="book-year">Publication Year: @book.PublishYear</p>
                         <div class="book-actions">
-                            <a href="@Url.Action("Detail", "Books", new { id = book.Id })" class="btn detail-btn">查看详情</a>
-                            <a href="@Url.Action("Read", "Books", new { id = book.Id })" class="btn read-btn">开始阅读</a>
+                            <a href="@Url.Action("Detail", "Books", new { id = book.Id })" class="btn detail-btn">View Details</a>
+                            <a href="@Url.Action("Read", "Books", new { id = book.Id })" class="btn read-btn">Start Reading</a>
                         </div>
                     </div>
                 </div>
             }
         </div>
 
-        <!-- 分页控件 -->
         <div class="pagination-container">
             <ul class="pagination">
-                <!-- 上一页 -->
                 @if (Model.CurrentPage > 1)
                 {
                     <li>
@@ -78,15 +72,14 @@
                             page = Model.CurrentPage - 1,
                             searchTerm = ViewBag.SearchTerm,
                             sortBy = ViewBag.SortBy
-                        })" class="page-link">上一页</a>
+                        })" class="page-link">Previous</a>
                     </li>
                 }
                 else
                 {
-                    <li class="page-item disabled"><span class="page-link">上一页</span></li>
+                    <li class="page-item disabled"><span class="page-link">Previous</span></li>
                 }
 
-                <!-- 页码 -->
                 @for (int i = 1; i <= Model.TotalPages; i++)
                 {
                     <li class="@(i == Model.CurrentPage ? "active" : "")">
@@ -98,7 +91,6 @@
                     </li>
                 }
 
-                <!-- 下一页 -->
                 @if (Model.CurrentPage < Model.TotalPages)
                 {
                     <li>
@@ -106,23 +98,23 @@
                             page = Model.CurrentPage + 1,
                             searchTerm = ViewBag.SearchTerm,
                             sortBy = ViewBag.SortBy
-                        })" class="page-link">下一页</a>
+                        })" class="page-link">Next</a>
                     </li>
                 }
                 else
                 {
-                    <li class="page-item disabled"><span class="page-link">下一页</span></li>
+                    <li class="page-item disabled"><span class="page-link">Next</span></li>
                 }
             </ul>
             <p class="pagination-info">
-                共 @Model.TotalItems 本图书，当前第 @Model.CurrentPage 页 / 共 @Model.TotalPages 页
+                Total @Model.TotalItems books, Page @Model.CurrentPage of @Model.TotalPages
             </p>
         </div>
     }
     else
     {
         <div class="no-results">
-            <p>未找到符合条件的图书，请尝试其他搜索词或排序方式。</p>
+            <p>No books found matching your criteria. Please try a different search term or sort option.</p>
         </div>
     }
 </section>
